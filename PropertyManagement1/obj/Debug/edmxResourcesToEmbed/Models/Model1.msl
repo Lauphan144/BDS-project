@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PPCDB2ModelStoreContainer" CdmEntityContainer="PPCDB2Entities1">
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.City)">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="District">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.District)">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="City_ID" ColumnName="City_ID" />
+          <ScalarProperty Name="District_Name" ColumnName="District_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Full_Contract">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.Full_Contract)">
+        <MappingFragment StoreEntitySet="Full_Contract">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Full_Contract_Code" ColumnName="Full_Contract_Code" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Year_Of_Birth" ColumnName="Year_Of_Birth" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+          <ScalarProperty Name="Date_Of_Contract" ColumnName="Date_Of_Contract" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+          <ScalarProperty Name="Remain" ColumnName="Remain" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Installment_Contract">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.Installment_Contract)">
+        <MappingFragment StoreEntitySet="Installment_Contract">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Installment_Contract_Code" ColumnName="Installment_Contract_Code" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Year_Of_Birth" ColumnName="Year_Of_Birth" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+          <ScalarProperty Name="Date_Of_Contract" ColumnName="Date_Of_Contract" />
+          <ScalarProperty Name="Installment_Payment_Method" ColumnName="Installment_Payment_Method" />
+          <ScalarProperty Name="Payment_Period" ColumnName="Payment_Period" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+          <ScalarProperty Name="Loan_Amount" ColumnName="Loan_Amount" />
+          <ScalarProperty Name="Taken" ColumnName="Taken" />
+          <ScalarProperty Name="Remain" ColumnName="Remain" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.Property)">
+        <MappingFragment StoreEntitySet="Property">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Property_Code" ColumnName="Property_Code" />
+          <ScalarProperty Name="Property_Name" ColumnName="Property_Name" />
+          <ScalarProperty Name="Property_Type_ID" ColumnName="Property_Type_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Bed_Room" ColumnName="Bed_Room" />
+          <ScalarProperty Name="Bath_Room" ColumnName="Bath_Room" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Installment_Rate" ColumnName="Installment_Rate" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="Album" ColumnName="Album" />
+          <ScalarProperty Name="Property_Status_ID" ColumnName="Property_Status_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Service">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.Property_Service)">
+        <MappingFragment StoreEntitySet="Property_Service">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
+          <ScalarProperty Name="Property_ID" ColumnName="Property_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Status">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.Property_Status)">
+        <MappingFragment StoreEntitySet="Property_Status">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Property_Status_Name" ColumnName="Property_Status_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property_Type">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.Property_Type)">
+        <MappingFragment StoreEntitySet="Property_Type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Property_Type_Name" ColumnName="Property_Type_Name" />
+          <ScalarProperty Name="Property_Amount" ColumnName="Property_Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service">
+      <EntityTypeMapping TypeName="IsTypeOf(PPCDB2Model.Service)">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="PPCDB2Model.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

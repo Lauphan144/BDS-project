@@ -1,0 +1,204 @@
+﻿@using PropertyManagement1.Models
+@model Property
+@{
+        ViewBag.Title = "Detais";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    @section detaicss{
+    <link rel="stylesheet" type="text/css" href="~/Other/styles/single.css">
+    <link rel="stylesheet" type="text/css" href="~/Other/styles/single_responsive.css">
+}
+
+<!-- Home -->
+
+<div class="home">
+    
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Other/hinh/listings.jpg" data-speed="0.8">
+        <img src="~/Other/hinh/listings.jpg" />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_content text-center">
+                    <div class="home_title">Chi Tiết</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+
+<div class="search">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="search_container">
+                    <div class="search_form_container">
+                        <form action="#" class="search_form" id="search_form">
+                            <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                                <div class="search_inputs d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                                    <input type="text" class="search_input" placeholder="Property type" required="required">
+                                    <input type="text" class="search_input" placeholder="No rooms" required="required">
+                                    <input type="text" class="search_input" placeholder="Location" required="required">
+                                </div>
+                                <button class="search_button">submit listing</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Listing -->
+
+<div class="listing_container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <!-- Image -->
+                <div class="listing_image"><img src="@Url.Content("~/Other/hinh/"+ Model.Avatar)" alt=""></div>
+
+                <!-- Tabs -->
+                <div class="listing_tabs d-flex flex-row align-items-start justify-content-between flex-wrap">
+
+                    <!-- Tab -->
+                    <div class="tab">
+                        <input type="radio" id="tab_1" name="listing_tabs" checked>
+                        <label for="tab_1"></label>
+                        <div class="tab_content d-flex flex-xl-row flex-column align-items-center justify-content-center">
+                            <div class="tab_icon"><img src="~/Other/hinh/house.svg" class="svg" alt=""></div>
+                            <span>open house</span>
+                        </div>
+                    </div>
+
+                    <!-- Tab -->
+                    <div class="tab">
+                        <input type="radio" id="tab_2" name="listing_tabs">
+                        <label for="tab_2"></label>
+                        <div class="tab_content d-flex flex-xl-row flex-column align-items-center justify-content-center">
+                            <div class="tab_icon"><img src="~/Other/hinh/houses.svg" class="svg" alt=""></div>
+                            <span>features</span>
+                        </div>
+                    </div>
+
+                    <!-- Tab -->
+                    <div class="tab">
+                        <input type="radio" id="tab_3" name="listing_tabs">
+                        <label for="tab_3"></label>
+                        <div class="tab_content d-flex flex-xl-row flex-column align-items-center justify-content-center">
+                            <div class="tab_icon"><img src="~/Other/hinh/house2.svg" class="svg" alt=""></div>
+                            <span>photos</span>
+                        </div>
+                    </div>
+
+                    <!-- Tab -->
+                    <div class="tab">
+                        <input type="radio" id="tab_4" name="listing_tabs">
+                        <label for="tab_4"></label>
+                        <div class="tab_content d-flex flex-xl-row flex-column align-items-center justify-content-center">
+                            <div class="tab_icon"><img src="~/Other/hinh/camera.svg" class="svg" alt=""></div>
+                            <span>video</span>
+                        </div>
+                    </div>
+
+                    <!-- Tab -->
+                    <div class="tab">
+                        <input type="radio" id="tab_5" name="listing_tabs">
+                        <label for="tab_5"></label>
+                        <div class="tab_content d-flex flex-xl-row flex-column align-items-center justify-content-center">
+                            <div class="tab_icon"><img src="~/Other/hinh/directions.svg" class="svg" alt=""></div>
+                            <span>nearby amenities</span>
+                        </div>
+                    </div>
+
+                    <!-- Tab -->
+                    <div class="tab">
+                        <input type="radio" id="tab_6" name="listing_tabs">
+                        <label for="tab_6"></label>
+                        <div class="tab_content d-flex flex-xl-row flex-column align-items-center justify-content-center">
+                            <div class="tab_icon"><img src="~/Other/hinh/location.svg" class="svg" alt=""></div>
+                            <span>location</span>
+                        </div>
+                    </div>
+
+                    <!-- Tab -->
+                    <div class="tab">
+                        <input type="radio" id="tab_7" name="listing_tabs">
+                        <label for="tab_7"></label>
+                        <div class="tab_content d-flex flex-xl-row flex-column align-items-center justify-content-center">
+                            <div class="tab_icon"><img src="~/Other/hinh/contract.svg" class="svg" alt=""></div>
+                            <span>contact</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- About -->
+
+                    <div class="about">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="property_info">
+                                    <div class="tag_price listing_price">@Model.Price</div>
+                                    <div class="listing_name"><h1> @Model.Property_Name</h1></div>
+                                    <div class="listing_location d-flex flex-row align-items-start justify-content-start">
+                                        <img src="~/Other/hinh/icon_1.png" alt="">
+                                        <span>@Model.Address</span>
+                                    </div>
+                                    <div class="listing_list">
+                                        <ul>
+                                            <li>Property ID: @Model.ID</li>
+                                            <li>Status: @Model.Property_Status.Property_Status_Name</li>
+                                        </ul>
+                                    </div>
+                                    <div class="prop_agent d-flex flex-row align-items-center justify-content-start">
+                                        <div class="prop_agent_image"><img src="@Url.Content("~/Other/hinh/"+ Model.Avatar)" alt=""></div>
+                                        <div class="prop_agent_name"><a href="https://www.messenger.com/t/1909825242436832">Liên Hệ</a></div>
+                                    </div>
+                                    <div class="prop_info">
+                                        <ul class="d-flex flex-row align-items-center justify-content-start flex-wrap">
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <img src="~/Other/hinh/icon_2_large.png" alt="">
+                                                <div>
+                                                    <div>@Model.Area M2</div>
+                                                    
+                                                </div>
+                                            </li>
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <img src="~/Other/hinh/icon_3_large.png" alt="">
+                                                <div>
+                                                    <div>@Model.Bath_Room</div>
+                                                    <div>baths</div>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <img src="~/Other/hinh/icon_4_large.png" alt="">
+                                                <div>
+                                                    <div>@Model.Bed_Room</div>
+                                                    <div>beds</div>
+                                                </div>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="about_text">
+                                    <p>@Model.Description</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+                
+            </div>
+        </div>
+    </div>
+</div>

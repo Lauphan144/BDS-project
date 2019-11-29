@@ -1,0 +1,151 @@
+﻿@model PropertyManagement1.Models.Login
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lgin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+</head>
+<body>
+<h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
+<div class="container" id="container">
+ 
+    <div class="form-container sign-in-container">
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            <form action="#">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+
+                <fieldset>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @if (@ViewBag.Message != null)
+                    {
+                        <div style="border: 1px solid red">
+                            @ViewBag.Message
+                        </div>
+                    }
+                    <div>
+                        @Html.LabelFor(a => a.username)
+                        @Html.TextBoxFor(a => a.username)
+                    </div>
+                    <div>
+                        @Html.LabelFor(a => a.password)
+                        @Html.PasswordFor(a => a.password)
+                        @Html.ValidationMessageFor(a => a.password)
+                    </div>
+                    <div>
+                        <input type="submit" value="Login">
+                    </div>
+                </fieldset>
+
+
+
+                @*<input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />*@
+                <a href="#">Forgot your password?</a>
+
+            </form>
+        }
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                
+            </div>
+        </div>
+    </div>
+</div>  
+
+@*<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-b-160 p-t-50">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                <span class="login100-form-title p-b-43">
+                    Account Login
+                </span>
+                <fieldset class="form-group">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @if (@ViewBag.Message != null)
+                    {
+                        <div style="border: 1px solid red">
+                            @ViewBag.Message
+                        </div>
+                    }
+
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Username is required">
+                        @Html.LabelFor(a => a.username, new { @class = "label-input100" })
+                        @Html.TextBoxFor(a => a.username, new { @class = "form-controll" })
+                    </div>
+                    <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
+                        @Html.LabelFor(a => a.password, new { @class = "label-input100" })
+                        @Html.PasswordFor(a => a.password, new { @class = "input100" })
+                        @Html.ValidationMessageFor(a => a.password)
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <input type="submit" class="login100-form-btn">
+                    </div>
+                </fieldset>
+            }
+        </div>
+
+
+        </div>
+    </div>*@
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

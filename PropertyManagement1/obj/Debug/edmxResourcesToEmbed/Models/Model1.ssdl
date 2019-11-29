@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PPCDB2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City_ID" Type="int" Nullable="false" />
+    <Property Name="District_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Full_Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Full_Contract_Code" Type="varchar" MaxLength="10" />
+    <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Year_Of_Birth" Type="int" />
+    <Property Name="SSN" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" />
+    <Property Name="Property_ID" Type="int" Nullable="false" />
+    <Property Name="Date_Of_Contract" Type="date" />
+    <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Deposit" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Remain" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Installment_Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Installment_Contract_Code" Type="varchar" MaxLength="10" />
+    <Property Name="Customer_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Year_Of_Birth" Type="int" />
+    <Property Name="SSN" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Customer_Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" />
+    <Property Name="Property_ID" Type="int" Nullable="false" />
+    <Property Name="Date_Of_Contract" Type="date" />
+    <Property Name="Installment_Payment_Method" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Payment_Period" Type="int" />
+    <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Deposit" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Loan_Amount" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Taken" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Remain" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="6" />
+    <Property Name="password" Type="nvarchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Property_Code" Type="varchar" MaxLength="7" />
+    <Property Name="Property_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Property_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="District_ID" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Area" Type="int" />
+    <Property Name="Bed_Room" Type="int" />
+    <Property Name="Bath_Room" Type="int" />
+    <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Installment_Rate" Type="float" />
+    <Property Name="Avatar" Type="nvarchar(max)" />
+    <Property Name="Album" Type="nvarchar(max)" />
+    <Property Name="Property_Status_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Property_Service">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_ID" Type="int" Nullable="false" />
+    <Property Name="Property_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Property_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Property_Status_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Property_Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Property_Type_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Property_Amount" Type="int" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_District_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="District" Type="Self.District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="City_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Full_Contract_Property">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="Full_Contract" Type="Self.Full_Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Full_Contract">
+        <PropertyRef Name="Property_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installment_Contract_Property">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="Installment_Contract" Type="Self.Installment_Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Installment_Contract">
+        <PropertyRef Name="Property_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_District">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="Property" Type="Self.Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="District_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Property_Status">
+    <End Role="Property_Status" Type="Self.Property_Status" Multiplicity="1" />
+    <End Role="Property" Type="Self.Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="Property_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Property_Type">
+    <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="1" />
+    <End Role="Property" Type="Self.Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="Property_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Service_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Property_Service" Type="Self.Property_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Service">
+        <PropertyRef Name="Service_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PPCDB2ModelStoreContainer">
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Full_Contract" EntityType="Self.Full_Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Installment_Contract" EntityType="Self.Installment_Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Property_Service" EntityType="Self.Property_Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Property_Status" EntityType="Self.Property_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Property_Type" EntityType="Self.Property_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_District_City" Association="Self.FK_District_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Full_Contract_Property" Association="Self.FK_Full_Contract_Property">
+      <End Role="Property" EntitySet="Property" />
+      <End Role="Full_Contract" EntitySet="Full_Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installment_Contract_Property" Association="Self.FK_Installment_Contract_Property">
+      <End Role="Property" EntitySet="Property" />
+      <End Role="Installment_Contract" EntitySet="Installment_Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_District" Association="Self.FK_Property_District">
+      <End Role="District" EntitySet="District" />
+      <End Role="Property" EntitySet="Property" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Property_Status" Association="Self.FK_Property_Property_Status">
+      <End Role="Property_Status" EntitySet="Property_Status" />
+      <End Role="Property" EntitySet="Property" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Property_Type" Association="Self.FK_Property_Property_Type">
+      <End Role="Property_Type" EntitySet="Property_Type" />
+      <End Role="Property" EntitySet="Property" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Service_Service" Association="Self.FK_Property_Service_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Property_Service" EntitySet="Property_Service" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

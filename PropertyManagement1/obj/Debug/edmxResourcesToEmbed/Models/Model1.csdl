@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PPCDB2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="District" Relationship="Self.FK_District_City" FromRole="City" ToRole="District" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_ID" Type="Int32" Nullable="false" />
+    <Property Name="District_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="City" Relationship="Self.FK_District_City" FromRole="District" ToRole="City" />
+    <NavigationProperty Name="Property" Relationship="Self.FK_Property_District" FromRole="District" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="Full_Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Full_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Year_Of_Birth" Type="Int32" />
+    <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Property_ID" Type="Int32" Nullable="false" />
+    <Property Name="Date_Of_Contract" Type="DateTime" Precision="0" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Deposit" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Remain" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Property" Relationship="Self.FK_Full_Contract_Property" FromRole="Full_Contract" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="Installment_Contract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Installment_Contract_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Year_Of_Birth" Type="Int32" />
+    <Property Name="SSN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Customer_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Property_ID" Type="Int32" Nullable="false" />
+    <Property Name="Date_Of_Contract" Type="DateTime" Precision="0" />
+    <Property Name="Installment_Payment_Method" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment_Period" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Deposit" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Loan_Amount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Taken" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Remain" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Property" Relationship="Self.FK_Installment_Contract_Property" FromRole="Installment_Contract" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property_Code" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Property_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Property_Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="District_ID" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="Int32" />
+    <Property Name="Bed_Room" Type="Int32" />
+    <Property Name="Bath_Room" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Installment_Rate" Type="Double" />
+    <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Album" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Property_Status_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="District" Relationship="Self.FK_Property_District" FromRole="Property" ToRole="District" />
+    <NavigationProperty Name="Full_Contract" Relationship="Self.FK_Full_Contract_Property" FromRole="Property" ToRole="Full_Contract" />
+    <NavigationProperty Name="Installment_Contract" Relationship="Self.FK_Installment_Contract_Property" FromRole="Property" ToRole="Installment_Contract" />
+    <NavigationProperty Name="Property_Status" Relationship="Self.FK_Property_Property_Status" FromRole="Property" ToRole="Property_Status" />
+    <NavigationProperty Name="Property_Type" Relationship="Self.FK_Property_Property_Type" FromRole="Property" ToRole="Property_Type" />
+  </EntityType>
+  <EntityType Name="Property_Service">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_ID" Type="Int32" Nullable="false" />
+    <Property Name="Property_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_Property_Service_Service" FromRole="Property_Service" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="Property_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property_Status_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Property" Relationship="Self.FK_Property_Property_Status" FromRole="Property_Status" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="Property_Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property_Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Property_Amount" Type="Int32" />
+    <NavigationProperty Name="Property" Relationship="Self.FK_Property_Property_Type" FromRole="Property_Type" ToRole="Property" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Property_Service" Relationship="Self.FK_Property_Service_Service" FromRole="Service" ToRole="Property_Service" />
+  </EntityType>
+  <Association Name="FK_District_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="District" Type="Self.District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="City_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_District">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="Property" Type="Self.Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="District_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Full_Contract_Property">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="Full_Contract" Type="Self.Full_Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Full_Contract">
+        <PropertyRef Name="Property_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installment_Contract_Property">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="Installment_Contract" Type="Self.Installment_Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Installment_Contract">
+        <PropertyRef Name="Property_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Property_Status">
+    <End Role="Property_Status" Type="Self.Property_Status" Multiplicity="1" />
+    <End Role="Property" Type="Self.Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Status">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="Property_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Property_Type">
+    <End Role="Property_Type" Type="Self.Property_Type" Multiplicity="1" />
+    <End Role="Property" Type="Self.Property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property_Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property">
+        <PropertyRef Name="Property_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Property_Service_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Property_Service" Type="Self.Property_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Property_Service">
+        <PropertyRef Name="Service_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PPCDB2Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="District" EntityType="Self.District" />
+    <EntitySet Name="Full_Contract" EntityType="Self.Full_Contract" />
+    <EntitySet Name="Installment_Contract" EntityType="Self.Installment_Contract" />
+    <EntitySet Name="Property" EntityType="Self.Property" />
+    <EntitySet Name="Property_Service" EntityType="Self.Property_Service" />
+    <EntitySet Name="Property_Status" EntityType="Self.Property_Status" />
+    <EntitySet Name="Property_Type" EntityType="Self.Property_Type" />
+    <EntitySet Name="Service" EntityType="Self.Service" />
+    <AssociationSet Name="FK_District_City" Association="Self.FK_District_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="District" EntitySet="District" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_District" Association="Self.FK_Property_District">
+      <End Role="District" EntitySet="District" />
+      <End Role="Property" EntitySet="Property" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Full_Contract_Property" Association="Self.FK_Full_Contract_Property">
+      <End Role="Property" EntitySet="Property" />
+      <End Role="Full_Contract" EntitySet="Full_Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installment_Contract_Property" Association="Self.FK_Installment_Contract_Property">
+      <End Role="Property" EntitySet="Property" />
+      <End Role="Installment_Contract" EntitySet="Installment_Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Property_Status" Association="Self.FK_Property_Property_Status">
+      <End Role="Property_Status" EntitySet="Property_Status" />
+      <End Role="Property" EntitySet="Property" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Property_Type" Association="Self.FK_Property_Property_Type">
+      <End Role="Property_Type" EntitySet="Property_Type" />
+      <End Role="Property" EntitySet="Property" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Property_Service_Service" Association="Self.FK_Property_Service_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Property_Service" EntitySet="Property_Service" />
+    </AssociationSet>
+    <EntitySet Name="Logins" EntityType="PPCDB2Model.Login" />
+  </EntityContainer>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>
