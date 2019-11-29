@@ -1,0 +1,134 @@
+﻿@using PropertyManagement1.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Property>
+
+
+@{
+    ViewBag.Title = "Listing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Listingsrc{
+    <script src="~/Other/js/listings.js"></script>
+
+}
+
+@section Listing{
+    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li><a href="@Url.Action("About","Home")">About</a></li>
+    <li class="active"><a href="@Url.Action("Listing","Home")">Listings</a></li>
+    <li><a href="@Url.Action("News","Home")">News</a></li>
+    <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+}
+@section Listingcss{
+
+    <link href="~/Other/styles/ConCac.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Other/styles/listings_responsive.css">
+}
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Other/hinh/listings.jpg" data-speed="0.8">
+        <img src="~/Other/hinh/listings.jpg" />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_content text-center">
+                    <div class="home_title">Danh Sách</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search -->
+
+<div class="search">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="search_container">
+                    <div class="search_form_container">
+                        <form action="#" class="search_form" id="search_form">
+                            <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                                <div class="search_inputs d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                                    <input type="text" class="search_input" placeholder="Loại Bất Sản" required="required">
+                                    <input type="text" class="search_input" placeholder="Số Phòng" required="required">
+                                    <input type="text" class="search_input" placeholder="Địa Điểm" required="required">
+                                </div>
+                                <button class="search_button">Lọc Danh Sách</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="extra_search_buttons d-flex flex-row align-items-start justify-content-start">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="listings">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <!-- Sorting -->
+                <!-- Listings Container -->
+                <div class="listings_container">
+
+                    @foreach (var item in Model)
+                    {
+                        <!-- Listing -->
+                        <div class="listing_box house sale">
+
+                            <div class="listing">
+                                <div class="listing_image">
+                                    <div class="listing_image_container">
+                                        <img src="@Url.Content("~/Other/hinh/"+item.Avatar)" alt="">
+                                    </div>
+                                    <div class="tags d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                        <div class="tag tag_house"><a href="@Url.Action("Index", "Home", new { @id = item.ID })">@item.Property_Type.Property_Type_Name</a></div>
+                                        <div class="tag tag_sale"><a href="@Url.Action("Detais", "Home", new { @id = item.ID })">@item.Property_Status.Property_Status_Name</a></div>
+                                    </div>
+                                    <div class="tag_price listing_price">@item.Price</div>
+                                </div>
+                                <div class="listing_content">
+                                    <div class="prop_location listing_location d-flex flex-row align-items-start justify-content-start">
+                                        <img src="~/Other/hinh/icon_1.png" alt="">
+                                        <a href="@Url.Action("Detais", "Home", new { @id = item.ID })">@item.Address</a>
+                                    </div>
+                                    <div class="listing_info">
+                                        <ul class="d-flex flex-row align-items-center justify-content-start flex-wrap">
+                                            <li class="property_area d-flex flex-row align-items-center justify-content-start">
+                                                <img src="~/Other/hinh/icon_2.png" alt="">
+                                                <span>@item.Area</span>
+                                            </li>
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <img src="~/Other/hinh/icon_3.png" alt="">
+                                                <span>@item.Bed_Room</span>
+                                            </li>
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <img src="~/Other/hinh/icon_4.png" alt="">
+                                                <span>@item.Bath_Room</span>
+                                            </li>
+                                            <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <img src="~/Other/hinh/icon_5.png" alt="">
+                                                <span>@item.Area</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+              
+
+                @Html.PagedListPager(Model, page => Url.Action("Listing", new { page, @class = "phantrang" }))
+            </div>
+        </div>
+    </div>
+</div>

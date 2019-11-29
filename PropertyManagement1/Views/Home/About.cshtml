@@ -3,22 +3,33 @@
     ViewBag.Title = "About";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Aboutsrc{
+    <script src="~/Other/js/about.js"></script>
+   
+}
 
+@section About{
+    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li class="active"><a href="@Url.Action("About","Home")">About</a></li>
+    <li><a href="@Url.Action("Listing","Home")">Listings</a></li>
+    <li><a href="@Url.Action("News","Home")">News</a></li>
+    <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+}
 @section aboutcss{
     <link rel="stylesheet" type="text/css" href="~/Other/styles/about.css">
     <link rel="stylesheet" type="text/css" href="~/Other/styles/about_responsive.css">
 }
-
-
 <!-- Home -->
-<!--About Us -->
+
 <div class="home">
-    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/about.jpg" data-speed="0.8"></div>
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Other/hinh/about.jpg" data-speed="0.8">
+        <img src="~/Other/hinh/about.jpg" />
+    </div>
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="home_content text-center">
-                    <div class="home_title">About us</div>
+                    <div class="home_title">Về CTy Chúng Tôi</div>
                 </div>
             </div>
         </div>
@@ -35,21 +46,21 @@
             <div class="col-lg-6">
                 <div class="intro_content">
                     <div class="section_title_container">
-                        <div class="section_subtitle">the best deals</div>
-                        <div class="section_title"><h1>Who we are</h1></div>
+                        <div class="section_title"><h1>Công ty bất động sản PPC </h1></div>
                     </div>
                     <div class="intro_text">
-                        <p>Nulla aliquet bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum. Cras at vehicula urna. Suspendisse fringilla lobortis justo, ut tempor leo cursus in. Nulla aliquet bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum. Cras at vehicula urna. Suspendisse fringilla lobortis justo, ut tempor leo cursus in.</p>
+                        <p>&nbsp &nbsp &nbsp Công ty bất động sản PPC (PPC = Perfect Property Company) là Doanh nghiệp hoạt động chuyên nghiệp trong lĩnh vực môi giới và tiếp thị bất động sản trong nước cũng như quốc tế. PPC được phát triển dựa trên nền tảng là sự hiểu biết sâu sắc về thị trường bất động sản, pháp luật và mối quan hệ vững chắc với các nhà đầu tư bất động sản chuyên nghiệp tại Việt Nam và đặc biệt là bất động sản tại Thành phố Hồ Chí Minh.</p>
+                        <p>&nbsp &nbsp &nbsp Công ty chuẩn bị khai trương vào ngày 01/01/2020</p>
                     </div>
-                    <div class="button intro_button"><a href="#">read more</a></div>
                 </div>
             </div>
 
             <!-- Intro Image -->
             <div class="col-lg-6 intro_col">
                 <div class="intro_image">
-                    <div class="background_image" style="background-image:url(images/intro.jpg)"></div>
-                    <img src="images/intro.jpg" alt="">
+                    <div class="background_image" style="background-image:url(https://localhost:44302/Other/hinh/intro.jpg)"></div>
+                    <img src="~/Other/hinh/intro.jpg" />
+
                 </div>
             </div>
 
@@ -76,12 +87,12 @@
                 <div class="service">
                     <div class="service_title_container d-flex flex-row align-items-center justify-content-start">
                         <div class="service_icon d-flex flex-column align-items-start justify-content-center">
-                            <img src="images/service_1.png" alt="">
+                            <img src="~/Other/hinh/service_1.png" alt="">
                         </div>
-                        <div class="service_title"><h3>Consulting</h3></div>
+                        <div class="service_title"><h3>Tư Vấn</h3></div>
                     </div>
                     <div class="service_text">
-                        <p>Nulla aliquet bibendum sem, non placer risus venenatis at. Prae sent vulputate bibendum dictum.</p>
+                        <p>Chúng tôi cam kết sẽ tư vấn, giải đáp mọi thắc mắc đến với quý Khách Hàng</p>
                     </div>
                 </div>
             </div>
@@ -91,12 +102,12 @@
                 <div class="service">
                     <div class="service_title_container d-flex flex-row align-items-center justify-content-start">
                         <div class="service_icon d-flex flex-column align-items-start justify-content-center">
-                            <img src="images/service_2.png" alt="">
+                            <img src="~/Other/hinh/service_2.png" alt="">
                         </div>
-                        <div class="service_title"><h3>Real estate sales</h3></div>
+                        <div class="service_title"><h3>Bất Động Sản Sạch</h3></div>
                     </div>
                     <div class="service_text">
-                        <p>Aliquet bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum. Cras at vehicula.</p>
+                        <p>Bất Động Sản được chứng thực và có nguồn tin tưởng tuyệt đối.</p>
                     </div>
                 </div>
             </div>
@@ -106,12 +117,12 @@
                 <div class="service">
                     <div class="service_title_container d-flex flex-row align-items-center justify-content-start">
                         <div class="service_icon d-flex flex-column align-items-start justify-content-center">
-                            <img src="images/service_3.png" alt="">
+                            <img src="~/Other/hinh/service_3.png" alt="">
                         </div>
-                        <div class="service_title"><h3>Renting</h3></div>
+                        <div class="service_title"><h3>Tự Giải Quyết</h3></div>
                     </div>
                     <div class="service_text">
-                        <p>Nulla aliquet bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum.</p>
+                        <p>Quý Khách có thể toàn quyền quyết định về Bất Động Sản theo ý muốn của mình.</p>
                     </div>
                 </div>
             </div>
@@ -121,12 +132,12 @@
                 <div class="service">
                     <div class="service_title_container d-flex flex-row align-items-center justify-content-start">
                         <div class="service_icon d-flex flex-column align-items-start justify-content-center">
-                            <img src="images/service_4.png" alt="">
+                            <img src="~/Other/hinh/service_4.png" alt="">
                         </div>
-                        <div class="service_title"><h3>Meditation</h3></div>
+                        <div class="service_title"><h3>Bí Mật</h3></div>
                     </div>
                     <div class="service_text">
-                        <p>Aliquet bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum. Cras at vehicula.</p>
+                        <p>Mọi thông tin cũng như các cuộc giao dịch của quý vịđược giữ bí mất tuyệt đối.</p>
                     </div>
                 </div>
             </div>
@@ -136,12 +147,12 @@
                 <div class="service">
                     <div class="service_title_container d-flex flex-row align-items-center justify-content-start">
                         <div class="service_icon d-flex flex-column align-items-start justify-content-center">
-                            <img src="images/service_5.png" alt="">
+                            <img src="~/Other/hinh/service_5.png" alt="">
                         </div>
-                        <div class="service_title"><h3>Evaluation</h3></div>
+                        <div class="service_title"><h3>Đánh Giá</h3></div>
                     </div>
                     <div class="service_text">
-                        <p>Bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum. Cras at vehicula.</p>
+                        <p>Đã được cấp phép để dịch vụ của chúng tôi hoạt động</p>
                     </div>
                 </div>
             </div>
@@ -151,12 +162,12 @@
                 <div class="service">
                     <div class="service_title_container d-flex flex-row align-items-center justify-content-start">
                         <div class="service_icon d-flex flex-column align-items-start justify-content-center">
-                            <img src="images/service_6.png" alt="">
+                            <img src="~/Other/hinh/service_6.png" alt="">
                         </div>
-                        <div class="service_title"><h3>Price Consulting</h3></div>
+                        <div class="service_title"><h3>Giá cả hợp lý</h3></div>
                     </div>
                     <div class="service_text">
-                        <p>Aliquet bibendum sem, non placerat risus venenatis at. Prae sent vulputate bibendum dictum. Cras at vehicula.</p>
+                        <p>Giá cả của chúng tôi là hợp lý so với mặt bằng thị trường Bất Động Sản.</p>
                     </div>
                 </div>
             </div>
@@ -166,59 +177,6 @@
 </div>
 
 <!-- Milestones -->
-
-<div class="milestones">
-    <div class="container">
-        <div class="row">
-
-            <!-- Milestone -->
-            <div class="col-xl-3 col-md-6 milestone_col">
-                <div class="milestone d-flex flex-row align-items-start justify-content-md-center justify-content-start">
-                    <div class="milestone_content">
-                        <div class="milestone_icon d-flex flex-column align-items-start justify-content-center"><img src="images/duplex.svg" alt=""></div>
-                        <div class="milestone_counter" data-end-value="425">0</div>
-                        <div class="milestone_text">homes sold</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Milestone -->
-            <div class="col-xl-3 col-md-6 milestone_col">
-                <div class="milestone d-flex flex-row align-items-start justify-content-md-center justify-content-start">
-                    <div class="milestone_content">
-                        <div class="milestone_icon d-flex flex-column align-items-start justify-content-center"><img src="images/prize.svg" alt=""></div>
-                        <div class="milestone_counter" data-end-value="18">0</div>
-                        <div class="milestone_text">awards</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Milestone -->
-            <div class="col-xl-3 col-md-6 milestone_col">
-                <div class="milestone d-flex flex-row align-items-start justify-content-md-center justify-content-start">
-                    <div class="milestone_content">
-                        <div class="milestone_icon d-flex flex-column align-items-start justify-content-center"><img src="images/home.svg" alt=""></div>
-                        <div class="milestone_counter" data-end-value="25" data-sign-after="k">0</div>
-                        <div class="milestone_text">followers</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Milestone -->
-            <div class="col-xl-3 col-md-6 milestone_col">
-                <div class="milestone d-flex flex-row align-items-start justify-content-md-center justify-content-start">
-                    <div class="milestone_content">
-                        <div class="milestone_icon d-flex flex-column align-items-start justify-content-center"><img src="images/rent.svg" alt=""></div>
-                        <div class="milestone_counter" data-end-value="1265">0</div>
-                        <div class="milestone_text">rentals</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
 <!-- Agents -->
 
 <div class="agents">
@@ -236,14 +194,14 @@
             <!-- Agent -->
             <div class="col-lg-4 agent_col">
                 <div class="agent">
-                    <div class="agent_image"><img src="images/realtor_1.jpg" alt=""></div>
+                    <div class="agent_image"><img src="~/Other/hinh/dog.jpg" alt=""></div>
                     <div class="agent_content">
-                        <div class="agent_name"><a href="#">Michael Smith</a></div>
-                        <div class="agent_title">Buying Agent</div>
+                        <div class="agent_name"><a href="https://www.facebook.com/jaypark1509">Nam Hay Quen</a></div>
+                        <div class="agent_title">Dog</div>
                         <div class="agent_list">
                             <ul>
-                                <li>michael@myhometemp.com</li>
-                                <li>+45 27774 5653 267</li>
+                                <li>NamHayQuen11223@gmail.com</li>
+                                <li>+113</li>
                             </ul>
                         </div>
                         <div class="social">
@@ -260,20 +218,20 @@
             <!-- Agent -->
             <div class="col-lg-4 agent_col">
                 <div class="agent">
-                    <div class="agent_image"><img src="images/realtor_2.jpg" alt=""></div>
+                    <div class="agent_image"><img src="~/Other/hinh/download.jpg" alt=""></div>
                     <div class="agent_content">
-                        <div class="agent_name"><a href="#">Jane Williams</a></div>
-                        <div class="agent_title">Buying Agent</div>
+                        <div class="agent_name"><a href="https://www.facebook.com/DangHBaoHan">LauPhan</a></div>
+                        <div class="agent_title">Gangster</div>
                         <div class="agent_list">
                             <ul>
-                                <li>michael@myhometemp.com</li>
-                                <li>+45 27774 5653 267</li>
+                                <li>lauphan144@gmail.com</li>
+                                <li>+344978808</li>
                             </ul>
                         </div>
                         <div class="social">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
                                 <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.facebook.com/DangHBaoHan"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
@@ -282,34 +240,14 @@
             </div>
 
             <!-- Agent -->
-            <div class="col-lg-4 agent_col">
-                <div class="agent">
-                    <div class="agent_image"><img src="images/realtor_3.jpg" alt=""></div>
-                    <div class="agent_content">
-                        <div class="agent_name"><a href="#">Carla Brown</a></div>
-                        <div class="agent_title">Buying Agent</div>
-                        <div class="agent_list">
-                            <ul>
-                                <li>michael@myhometemp.com</li>
-                                <li>+45 27774 5653 267</li>
-                            </ul>
-                        </div>
-                        <div class="social">
-                            <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
         <div class="row contact_row">
             <div class="col">
-                <div class="button ml-auto mr-auto"><a href="#">contact us</a></div>
+                <div class="button ml-auto mr-auto"><a href="https://www.messenger.com/t/DangHBaoHan">contact us</a></div>
             </div>
         </div>
     </div>
 </div>
+

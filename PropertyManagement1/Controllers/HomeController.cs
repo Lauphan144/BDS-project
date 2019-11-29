@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PropertyManagement1.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace PropertyManagement1.Controllers
 {
@@ -13,7 +15,7 @@ namespace PropertyManagement1.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var lslPro = db.Property.Take(8).ToList(); 
+            var lslPro = db.Property.Take(6).OrderBy(n => n.Price).ToList();
             return View(lslPro);
         }
         public ActionResult Detais(int id)
@@ -31,9 +33,28 @@ namespace PropertyManagement1.Controllers
         {
             return View();
         }
-        public ActionResult Listing()
+        public ActionResult Listing(int? page)
         {
-            return View();
+            if (page == null) page = 1;
+            var links = (from l in db.Property
+                         select l).OrderBy(x => x.ID);
+            
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(links.ToPagedList(pageNumber, pageSize));
+
+        }
+        public ActionResult News(int? page)
+        {
+            if (page == null) page = 1;
+            var links = (from l in db.Property
+                         select l).OrderBy(x => x.ID);
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(links.ToPagedList(pageNumber, pageSize));
+
+
         }
     }
 }

@@ -192,6 +192,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin.css" />
     <Content Include="Content\adminlte.min.css" />
     <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -242,6 +243,8 @@
     <Content Include="Other\hinh\contact_image.jpg" />
     <Content Include="Other\hinh\contract.svg" />
     <Content Include="Other\hinh\directions.svg" />
+    <Content Include="Other\hinh\dog.jpg" />
+    <Content Include="Other\hinh\download.jpg" />
     <Content Include="Other\hinh\duplex.svg" />
     <Content Include="Other\hinh\envelope-2.svg" />
     <Content Include="Other\hinh\envelope.svg" />
@@ -349,12 +352,12 @@
     <Content Include="Other\styles\bootstrap-4.1.2\popper.js" />
     <Content Include="Other\styles\contact.css" />
     <Content Include="Other\styles\contact_responsive.css" />
-    <Content Include="Other\styles\listings.css" />
     <Content Include="Other\styles\listings_responsive.css" />
     <Content Include="Other\styles\main_styles.css" />
     <Content Include="Other\styles\responsive.css" />
     <Content Include="Other\styles\single.css" />
     <Content Include="Other\styles\single_responsive.css" />
+    <Content Include="Other\styles\ConCac.css" />
     <Content Include="Scripts\Scrips\animsition.min.js" />
     <Content Include="Scripts\Scrips\bootstrap.min.js" />
     <Content Include="Scripts\Scrips\countdowntime.js" />
@@ -487,6 +490,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Detais.cshtml" />
+    <Content Include="Views\Home\Listing.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

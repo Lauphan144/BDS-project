@@ -1,0 +1,63 @@
+﻿.button-edit {
+    color: #ffffff;
+    border: 2px solid #6AD005;
+    background: #6AD005;
+    text-align: center;
+    border-radius: 5px;
+}
+    .button-edit:hover {
+        background: #ffffff;
+        color: #6AD005;
+    }
+.button-details {
+    color: #ffffff;
+    border: 2px solid #808080;
+    text-align: center;
+    margin: 10px 0px;
+    padding: 0px 5px;
+    background: #808080;
+    border-radius: 5px;
+}
+
+    .button-details:hover {
+        background: #ffffff;
+        color: #808080;
+    }
+
+
+.button-delete {
+    color: white;
+    border: 2px solid #ff0000;
+    text-align: center;
+    padding: 0px 5px;
+    background: #ff0000;
+    border-radius: 5px;
+}
+
+    .button-delete:hover {
+        background: #ffffff;
+        color: #ff0000;
+        
+    }
+
+.button-add {
+    color: white;
+    border: 2px solid #00BFFF;
+    background: #00BFFF;
+    text-align: center;
+    margin: 30px;
+    padding: 6px 20px;
+    border-radius: 8px;
+}
+
+    .button-add:hover {
+        background: #ffffff;
+        color: #00BFFF;
+        
+    }
+
+
+.btn-admin{
+    display: flex;
+    flex-direction: column;
+}

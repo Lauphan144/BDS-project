@@ -1,0 +1,108 @@
+﻿@using PropertyManagement1.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Property>
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Newsrc{
+    <script src="~/Other/js/blog.js"></script>
+
+}
+
+@section News{
+    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li><a href="@Url.Action("About","Home")">About</a></li>
+    <li><a href="@Url.Action("Listing","Home")">Listings</a></li>
+    <li class="active"><a href="@Url.Action("News","Home")">News</a></li>
+    <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+}
+@section Newcss{
+
+    <link href="~/Other/styles/blog.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Other/styles/blog_responsive.css">
+}
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Other/hinh/blog.jpg" data-speed="0.8">
+        <img src="~/Other/hinh/listings.jpg" />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_content text-center">
+                    <div class="home_title">Bất Động Sản Mới</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Blog -->
+
+<div class="blog">
+    <div class="container">
+        <div class="row">
+
+            <!-- Blog Posts -->
+
+            <div class="col-lg-9">
+                <div class="blog_posts">
+
+                    <!-- Blog Post -->
+                    @foreach (var item in Model)
+                    {
+                        <div class="blog_post">
+                            <div class="blog_post_image">
+                                <img src="@Url.Content("~/Other/hinh/" + item.Avatar)" alt="">
+                                <div class="blog_post_date d-flex flex-column align-items-center justify-content-center">
+                                    @item.ID
+                                </div>
+                            </div>
+                            <div class="blog_post_content">
+                                <div class="blog_post_title"><a href="@Url.Action("Detais","Home", new {@id = item.ID })">@item.Property_Name</a></div>
+                                <div class="blog_post_info">
+                                    <ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                        <li>by <a href="#">Area: @item.Area</a></li>
+                                        <li>in <a href="#">Real Estate</a></li>
+                                        <li>
+                                            <ul class="d-flex flex-row align-items-start justify-content-start">
+                                                <li><a href="#">tips and tricks</a></li>
+                                                <li><a href="#">@item.Bath_Room</a></li>
+                                                <li><a href="#">@item.Address</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="blog_post_text">
+                                    <p>@item.Description</p>x`
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    }
+
+
+                </div>
+                @Html.PagedListPager(Model, page => Url.Action("News", new { page, @class = "phantrang" }))
+            </div>
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="sidebar">
+
+                    <!-- Search -->
+                    <!-- Categories -->
+                    <!-- Archive -->
+                    <!-- Tags -->
+                    <!-- Extra -->
+                    <!-- Listing -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

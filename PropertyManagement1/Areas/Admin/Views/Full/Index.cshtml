@@ -5,11 +5,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Full Installment</h2>
+    <h2 style="text-align: center">Hợp đồng thanh toán</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <p>
+        @Html.ActionLink("Tạo Mới", "Create", new { }, new { @class = "button-add" })
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -68,9 +68,11 @@
         
         
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <div class="btn-admin">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "button-edit" })
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "button-details" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "button-delete" })
+            </div>
         </td>
     </tr>
 }
