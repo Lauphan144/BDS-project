@@ -15,7 +15,7 @@ namespace PropertyManagement1.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var lslPro = db.Property.Take(6).OrderBy(n => n.Price).ToList();
+            var lslPro = db.Property.Take(3).OrderBy(n => n.Price).ToList();
             return View(lslPro);
         }
         public ActionResult Detais(int id)
@@ -55,6 +55,10 @@ namespace PropertyManagement1.Controllers
             return View(links.ToPagedList(pageNumber, pageSize));
 
 
+        }
+        public ActionResult Contact()
+        {
+            return View();
         }
     }
 }

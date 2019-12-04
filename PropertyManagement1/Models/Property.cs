@@ -11,7 +11,7 @@ namespace PropertyManagement1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
     public partial class Property
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -34,6 +34,7 @@ namespace PropertyManagement1.Models
         public Nullable<decimal> Price { get; set; }
         public Nullable<double> Installment_Rate { get; set; }
         public string Avatar { get; set; }
+
         public string Album { get; set; }
         public int Property_Status_ID { get; set; }
     

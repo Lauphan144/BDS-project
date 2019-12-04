@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Contact{
+    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+    <li><a href="@Url.Action("About","Home")">About</a></li>
+
+    <li><a href="@Url.Action("Listing","Home")">Listings</a></li>
+    <li><a href="@Url.Action("News","Home")">News</a></li>
+    <li class="active"><a href="@Url.Action("Contact","Home")">Contact</a></li>
+}
+@section Contactcss {
+    <link rel="stylesheet" type="text/css" href="~/Other/styles/contact.css">
+    <link rel="stylesheet" type="text/css" href="~/Other/styles/contact_responsive.css">
+}
+@section Contactsrc {
+    <script src="~/Other/js/custom.js"></script>
+}
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Other/hinh/blog.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_content text-center">
+                    <div class="home_title">Liên Hệ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Thông tin liên hệ -->
+
+<div class="Thông tin liên hệ">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <div class="section_subtitle">the best deals</div>
+                    <div class="section_title"><h1>Get in touch</h1></div>
+                </div>
+            </div>
+        </div>
+        <div class="row contact_row">
+
+            <!-- Contact - About -->
+            <div class="col-lg-4 contact_col">
+                <div class="logo"><a href="@Url.Action("Index","Home")">Perfect<span>Property</span></a></div>
+                <div class="contact_text">
+                    <p>Cung cấp bất động sản chất lượng nhất tới tay khách hàng.</p>
+                </div>
+            </div>
+
+            <!-- Contact - Info -->
+            <div class="col-lg-4 contact_col">
+                <div class="contact_info">
+                    <ul>
+                        <li class="d-flex flex-row align-items-center justify-content-start">
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <div><img src="~/Other/hinh/placeholder_2.svg" alt=""></div>
+                            </div>
+                            <span>30 Nguyễn Oanh, Phường 5, Quận Gò Vấp </span>
+                        </li>
+                        <li class="d-flex flex-row align-items-center justify-content-start">
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <div><img src="~/Other/hinh/phone-call-2.svg" alt=""></div>
+                            </div>
+                            <span>+84 868336756</span>
+                        </li>
+                        <li class="d-flex flex-row align-items-center justify-content-start">
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <div><img src="~/Other/hinh/envelope-2.svg" alt=""></div>
+                            </div>
+                            <span>Lauphan14@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact - Image -->
+            <div class="col-lg-4 contact_col">
+                <div class="contact_image d-flex flex-column align-items-center justify-content-center">
+                    <img src="~/Other/hinh/ppclogo.jpg" alt="">
+                   
+                </div>
+            </div>
+
+        </div>
+        <div class="row contact_form_row">
+            <div class="col">
+                <div class="contact_form_container">
+                    <form action="https://www.messenger.com/t/DangHBaoHan" class="contact_form text-center" id="contact_form">
+
+
+                        <button class="contact_button">Liên Hệ Chúng Tôi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

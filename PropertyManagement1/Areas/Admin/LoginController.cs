@@ -38,10 +38,7 @@ namespace PropertyManagement1.Areas.Admin
                 }
                 
             }
-            else {
-
-                
-            }
+           
             return View(objUser);
         }
 

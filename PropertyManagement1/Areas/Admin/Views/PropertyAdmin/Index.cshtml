@@ -21,20 +21,30 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.Area)
         </th>
-        
-        
+
+
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        
-        
-        
-       
-        
+        <th>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Property_Status.Property_Status_Name)
+        </th>
+
+        <th>
+            Option
+        </th>
+
+
+
+
+
         <th></th>
     </tr>
 
@@ -65,9 +75,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Property_Status.Property_Status_Name)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Property_Type.Property_Type_Name)
-        </td>
+
         <td>
             <div class="btn-admin">
 
