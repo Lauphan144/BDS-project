@@ -31,27 +31,9 @@ namespace PropertyManagement1.Areas.Admin.Controllers
             ViewBag.Property_Status_ID = new SelectList(db.Property_Status.ToList(), "ID", "Property_Status_Name", propertyTypeSelected);
         }
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID, Property_Code, Property_Name, Property_Type_ID, Description, District_ID, Address, Area, Bed_Room, Bath_Room, Price, Installment_Rate, Avatar, Album, Property_Status_ID")] Property property, HttpPostedFileBase files)
+        public ActionResult Create([Bind(Include = "ID, Property_Code, Property_Name, Property_Type_ID, Description, District_ID, Address, Area, Bed_Room, Bath_Room, Price, Installment_Rate, Avatar, Album, Property_Status_ID")] Property property)
         {
-            string album = "";
-            Random random = new Random();
-            if (files != null)
-            {
-                foreach (var imageFile in files)
-                {
-                    if (imageFile != null)
-                    {
-                        var fileName = random.Next(1, 99999).ToString() + Path.GetFileName(imageFile.FileName);
-                        var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
-
-                        // The files are not actually saved in this demo
-                        imageFile.SaveAs(physicalPath);
-                        album += album.Length > 0 ? ";" + fileName : fileName;
-                    }
-                }
-            }
-            property.Album = album;
-
+           
 
             if (ModelState.IsValid)
             {
