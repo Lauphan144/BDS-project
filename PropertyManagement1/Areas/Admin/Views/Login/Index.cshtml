@@ -11,23 +11,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="~/Content/css/StyleSheet1.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/76c71873ca.js" crossorigin="anonymous"></script>
     <!--===============================================================================================-->
 </head>
 <body>
-<h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
+<h2>Vui lòng điền thông tin đăng nhập</h2>
 <div class="container" id="container">
  
     <div class="form-container sign-in-container">
         @using (Html.BeginForm("Login", "Login", FormMethod.Post))
         {
             <form action="#">
-                <h1>Sign in</h1>
+                <h1>Đăng Nhập</h1>
                 <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/DangHBaoHan" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://mail.google.com/mail/u/0/#inbox" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="https://www.instagram.com/lau_phan/" class="social"><i class="fab fa-instagram"></i></a>
                 </div>
-                <span>or use your account</span>
+                <span>Nhập Thông Tin</span>
 
                 <fieldset>
                     @Html.AntiForgeryToken()
@@ -48,7 +49,7 @@
                         @Html.ValidationMessageFor(a => a.password)
                     </div>
                     <div>
-                        <input type="submit" value="Login">
+                        <input type="submit" value="Login"> 
                     </div>
                 </fieldset>
 
@@ -56,7 +57,7 @@
 
                 @*<input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />*@
-                <a href="#">Forgot your password?</a>
+                <a href="/Home/Index/">Trở về Trang Chính</a>
 
             </form>
         }
@@ -66,11 +67,11 @@
             <div class="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
                 <p>To keep connected with us please login with your personal info</p>
-                <button class="ghost" id="signIn">Sign In</button>
+                <button class="ghost" id="signIn">Đăng Nhập</button>
             </div>
             <div class="overlay-panel overlay-right">
-                <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
+                <h1>Chào Bạn!</h1>
+                <p>Chào mừng bạn đến với team 12 nha!</p>
                 
             </div>
         </div>

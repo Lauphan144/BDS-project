@@ -16,6 +16,28 @@ namespace PropertyManagement1.Areas.Admin.Controllers
             var iC = db.Installment_Contract.ToList();
             return View(iC);
         }
+        public ActionResult Print(int id)
+        {
+            var contract = db.Installment_Contract.FirstOrDefault(n => n.ID == id);
+            if (contract != null)
+            {
+                InstallmentContractPrintModel fc1 = new InstallmentContractPrintModel();
+                fc1.Installment_Contract_Code = contract.Installment_Contract_Code;
+                fc1.Customer_Name = contract.Customer_Name;
+                fc1.Customer_Address = contract.Customer_Address;
+                fc1.Date_Of_Contract = contract.Date_Of_Contract;
+                fc1.Mobile = contract.Mobile;
+                fc1.Price = contract.Price;
+                fc1.Desposit = contract.Deposit;
+
+                fc1.Property_Code = contract.Property.Property_Code;
+                fc1.Address = contract.Property.Address;
+
+                return View(fc1);
+            }
+            else
+                return View();
+        }
         public ActionResult Create()
         {
             PopularData();

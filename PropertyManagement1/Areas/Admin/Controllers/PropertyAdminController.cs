@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PropertyManagement1.Models;
 using System.IO;
+using System.Data.Entity;
 
 namespace PropertyManagement1.Areas.Admin.Controllers
 {
@@ -31,12 +32,40 @@ namespace PropertyManagement1.Areas.Admin.Controllers
             ViewBag.Property_Status_ID = new SelectList(db.Property_Status.ToList(), "ID", "Property_Status_Name", propertyTypeSelected);
         }
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID, Property_Code, Property_Name, Property_Type_ID, Description, District_ID, Address, Area, Bed_Room, Bath_Room, Price, Installment_Rate, Avatar, Album, Property_Status_ID")] Property property)
+        public ActionResult Create([Bind(Include = "ID, Property_Code, Property_Name, Property_Type_ID, Description, District_ID, Address, Area, Bed_Room, Bath_Room, Price, Installment_Rate, Avatar, Album, Property_Status_ID")] Property property, List<HttpPostedFileBase> files)
         {
            
 
             if (ModelState.IsValid)
             {
+                string album = "";
+                var file = Request.Files["file"];
+
+                if (file != null)
+                {
+                    foreach (var imageFile in files)
+                    {
+                        if (imageFile != null)
+                        {
+                            var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+                            // The files are not actually saved in this demo
+                            imageFile.SaveAs(physicalPath);
+                            album += album.Length > 0 ? ";" + fileName : fileName;
+                        }
+                    }
+                }
+                property.Album = album;
+                if (file != null)
+                {
+                    var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
+                    var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
+                    file.SaveAs(physicPath);
+                    property.Avatar = avatar;
+                }
+                property.Installment_Rate = 0.7;
+
                 db.Property.Add(property);
                 db.SaveChanges();
                 PopularMessage(true);
@@ -58,27 +87,67 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+
             var property = db.Property.Select(p => p).Where(p => p.ID == id).FirstOrDefault();
             PopularData(property.Property_Type_ID, property.Property_Status_ID);
             return View(property);
         }
         [HttpPost]
-        public ActionResult Edit(int id,Property pp)
+        public ActionResult Edit(int id,Property pp, List<HttpPostedFileBase> files)
         {
             var Property = db.Property.ToList();
             try
             {
+
+                string album = "";
+
+                var file = Request.Files["file"];
+                //up album
+                if (files != null)
+                {
+                    foreach (var imageFile in files)
+                    {
+                        if (imageFile != null)
+                        {
+                            var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+
+                            // The files are not actually saved in this demo
+                            imageFile.SaveAs(physicalPath);
+                            album += album.Length > 0 ? ";" + fileName : fileName;
+                        }
+                    }
+                }
+                pp.Album = album;
+                //upload ảnh
+
+                if (file != null)
+                {
+                    var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
+                    var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
+                    file.SaveAs(physicPath);
+                    pp.Avatar = avatar;
+                }
+
+
+
+
+
                 var property = db.Property.Select(p => p).Where(p => p.ID ==id).FirstOrDefault();
                 PopularData(property.Property_Type_ID, property.Property_Status_ID);
-                property.ID = pp.ID;
                 property.Property_Name = pp.Property_Name;
+                property.Property_Type_ID = pp.Property_Type_ID;
                 property.Description = pp.Description;
+                property.District_ID = pp.District_ID;
                 property.Address = pp.Address;
                 property.Area = pp.Area;
-                property.Bed_Room = pp.Bed_Room;
+                property.Avatar = pp.Avatar;
+                property.Album = pp.Album;
                 property.Bath_Room = pp.Bath_Room;
+                property.Bed_Room = pp.Bed_Room;
                 property.Price = pp.Price;
                 property.Installment_Rate = pp.Installment_Rate;
+                property.Property_Status_ID = pp.Property_Status_ID;
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
@@ -113,6 +182,23 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         {
             var property = db.Property.Select(p => p).Where(p => p.ID == id).FirstOrDefault();
             return View(property);
+        }
+        [HttpPost]
+        public string deleteImage(string imageName, int id)
+        {
+            string fullPath = Request.MapPath("~/Images" + imageName);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
+            var property = db.Property.FirstOrDefault(x => x.ID == id);
+            var album = property.Album.Split(';');
+            album = album.Where(w => w != imageName).ToArray();
+            property.Album = string.Join(";", album);
+
+            db.Entry(property).State = EntityState.Modified;
+            db.SaveChanges();
+            return property.Album;
         }
     }
 }

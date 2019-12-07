@@ -70,8 +70,9 @@
         <td>
             <div class="btn-admin">
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "button-edit" })
-                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "button-details" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "button-delete" })
+                @Html.ActionLink("Print", "Print", new { id = item.ID }, new { @class = "button-print" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "button-print" })
+
             </div>
         </td>
     </tr>
