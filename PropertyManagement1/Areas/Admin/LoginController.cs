@@ -16,18 +16,19 @@ namespace PropertyManagement1.Areas.Admin
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Login objUser)
+        public ActionResult Login(Account objUser)
         {
             if (ModelState.IsValid)
             {
                 
                 using (PPCDB2Entities1 db = new PPCDB2Entities1())
                 {
-                    var obj = db.Logins.Where(a => a.username.Equals(objUser.username) && a.password.Equals(objUser.password)).FirstOrDefault();
+                    var obj = db.Accounts.Where(a => a.Username.Equals(objUser.Username) && a.Password.Equals(objUser.Username)).FirstOrDefault();
                     if (obj != null)
                     {
-                        Session["UserID"] = obj.id.ToString();
-                        Session["UserName"] = obj.username.ToString();
+                        Session["UserID"] = obj.ID.ToString();
+                        Session["UserName"] = obj.Username.ToString();
+                        Session["Role"] = obj.Role.ToString();
                         return RedirectToAction("Index", "PropertyAdmin");
                         
                     } else
@@ -41,6 +42,33 @@ namespace PropertyManagement1.Areas.Admin
            
             return View(objUser);
         }
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session["ID"] = null;
+            Session["Username"] = null;
+            Session["Role"] = null;
+            return RedirectToAction("Index", "Login");
+        }
+
+        private ActionResult RedirectToLocal(string returnURL = "")
+        {
+            try
+            {
+                // If the return url starts with a slash "/" we assume it belongs to our site
+                // so we will redirect to this "action"
+                if (!string.IsNullOrWhiteSpace(returnURL) && Url.IsLocalUrl(returnURL))
+                    return Redirect(returnURL);
+
+                // If we cannot verify if the url is local to our host we redirect to a default location
+                return RedirectToAction("Index", "Login");
+            }
+            catch
+            {
+                throw;
+            }
+            
+        }
 
         //public ActionResult UserDashBoard()
         //{
@@ -53,7 +81,7 @@ namespace PropertyManagement1.Areas.Admin
         //        return RedirectToAction("Login");
         //    }
         //}
-        
+
     }
 } 
   

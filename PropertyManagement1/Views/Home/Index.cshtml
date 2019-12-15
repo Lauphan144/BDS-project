@@ -71,19 +71,19 @@
             <div class="row">
                 <div class="col">
                     <div class="search_container">
-                        <div class="search_title">Find your home</div>
+                        <div class="search_title">Tìm Kiếm Bất Động Sản</div>
                         <div class="search_form_container">
-                            <form action="#" class="search_form" id="search_form">
+                            <form action="@Url.Action("Search","Home")" class="search_form" id="search_form" role="search" method="post">
                                 <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
                                     <div class="search_inputs d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                        <input type="text" class="search_input" placeholder="Property type" required="required">
-                                        <input type="text" class="search_input" placeholder="No rooms" required="required">
-                                        <input type="text" class="search_input" placeholder="Location" required="required">
+                                        <input type="text" class="search_input1" placeholder="Tên Bất Động Sản" required="required"  name="search">
+                                        
                                     </div>
-                                    <button class="search_button">submit listing</button>
+                                    <button class="search_button">Tìm Kiếm</button>
                                 </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -100,8 +100,8 @@
         <div class="row">
             <div class="col">
                 <div class="section_title_container text-center">
-                    <div class="section_subtitle">the best deals</div>
-                    <div class="section_title"><h1>Featured Properties</h1></div>
+                    <div class="section_subtitle">Được Quan Tâm</div>
+                    <div class="section_title"><h1>Bất Động Sản Tiềm Năng</h1></div>
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
                                 <div class="tag tag_house"><a href="@Url.Action("Detais","Home", new {@id = item.ID })">@item.Property_Type.Property_Type_Name</a></div>
                                 <div class="tag tag_sale"><a href="@Url.Action("Detais","Home", new {@id = item.ID })">@item.Property_Status.Property_Status_Name</a></div>
                             </div>
-                            <div class="tag_price listing_price">@item.Price</div>
+                            <div class="tag_price listing_price">@string.Format("{0:0,0.00,00}", item.Price)  VNĐ</div>
                         </div>
                         <div class="listing_content">
                             <div class="prop_location listing_location d-flex flex-row align-items-start justify-content-start">

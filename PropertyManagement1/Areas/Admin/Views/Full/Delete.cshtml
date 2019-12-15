@@ -5,9 +5,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 style="text-align:center">Xóa Hợp Đồng</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn chắc chắn muốn xóa?</h3>
 <div>
     <h4>Full_Contract</h4>
     <hr />
@@ -114,7 +114,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Xóa Hợp Đồng" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

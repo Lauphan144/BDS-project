@@ -696,15 +696,15 @@ section {
   border: solid 2px #ffffff;
 }
 .search_input {
-  width: calc((100% - 22px) / 3);
-  height: 51px;
-  padding-left: 27px;
-  background: #ffffff;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  font-weight: 500;
-  color: #2b2e35;
+    width: calc(100% - 260px);
+    height: 51px;
+    padding-left: 27px;
+    background: #ffffff;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2b2e35;
 }
 .search_input::-webkit-input-placeholder {
   font-size: 14px !important;

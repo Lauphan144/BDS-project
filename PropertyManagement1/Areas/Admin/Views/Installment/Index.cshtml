@@ -76,9 +76,11 @@
             @Html.DisplayFor(modelItem => item.Property.Property_Code)
         </td>
         <td>
-            <div class="btn-admin">
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "button-edit" })
-                @Html.ActionLink("Print", "Print", new { id = item.ID }, new { @class = "button-print" })
+            <div class="btn-admin btn-admin2" >
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ID }, new { @class = "button-edit" })
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.ID }, new { @class = "button-details" })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID }, new { @class = "button-delete" })
+                @Html.ActionLink("In", "Print", new { id = item.ID }, new { @class = "button-print1" })
             </div>
            
         </td>

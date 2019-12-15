@@ -48,14 +48,13 @@
             <div class="col">
                 <div class="search_container">
                     <div class="search_form_container">
-                        <form action="#" class="search_form" id="search_form">
+                        <form action="@Url.Action("Search","Home")" class="search_form" id="search_form" role="search" method="post">
                             <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
                                 <div class="search_inputs d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                    <input type="text" class="search_input" placeholder="Loại Bất Sản" required="required">
-                                    <input type="text" class="search_input" placeholder="Số Phòng" required="required">
-                                    <input type="text" class="search_input" placeholder="Địa Điểm" required="required">
+                                    <input type="text" class="search_input1" placeholder="Tên Bất Động Sản" required="required" name="seach" />
+                                    
                                 </div>
-                                <button class="search_button">Lọc Danh Sách</button>
+                                <button class="search_button">Tìm Kiếm</button>
                             </div>
                         </form>
                     </div>
@@ -90,7 +89,7 @@
                                         <div class="tag tag_house"><a href="@Url.Action("Index", "Home", new { @id = item.ID })">@item.Property_Type.Property_Type_Name</a></div>
                                         <div class="tag tag_sale"><a href="@Url.Action("Detais", "Home", new { @id = item.ID })">@item.Property_Status.Property_Status_Name</a></div>
                                     </div>
-                                    <div class="tag_price listing_price">@item.Price</div>
+                                    <div class="tag_price listing_price">@string.Format("{0:0,0.00,00}", item.Price) VNĐ</div>
                                 </div>
                                 <div class="listing_content">
                                     <div class="prop_location listing_location d-flex flex-row align-items-start justify-content-start">

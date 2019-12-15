@@ -15,6 +15,7 @@ namespace PropertyManagement1.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            
             var lslPro = db.Property.Take(3).OrderBy(n => n.Price).ToList();
             return View(lslPro);
         }
@@ -59,6 +60,21 @@ namespace PropertyManagement1.Controllers
         public ActionResult Contact()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult Search(string search)
+        {
+            var p = db.Property.ToList().Where(x => x.Property_Name.Contains(search));
+            
+
+            var property = from b in db.Property select b;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                property = db.Property.Where(b => b.Property_Name.Contains(search));
+            }
+            
+            return View(property.ToList());
         }
     }
 }

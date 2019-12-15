@@ -242,6 +242,7 @@
       <End Role="Property_Service" EntitySet="Property_Service" />
     </AssociationSet>
     <EntitySet Name="Logins" EntityType="PPCDB2Model.Login" />
+    <EntitySet Name="Accounts" EntityType="PPCDB2Model.Account" />
   </EntityContainer>
   <EntityType Name="Login">
     <Key>
@@ -250,5 +251,16 @@
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="username" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
     <Property Name="password" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Full_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
   </EntityType>
 </Schema>

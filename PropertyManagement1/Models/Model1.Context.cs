@@ -35,5 +35,6 @@ namespace PropertyManagement1.Models
         public virtual DbSet<Property_Type> Property_Type { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
     }
 }

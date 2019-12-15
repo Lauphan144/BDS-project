@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="~/Other/plugins/OwlCarousel2-2.3.4/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="~/Other/plugins/OwlCarousel2-2.3.4/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="~/Other/plugins/OwlCarousel2-2.3.4/animate.css">
-
+    <link href="~/Other/styles/search.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
     @RenderSection("maincss", required: false)
     @RenderSection("aboutcss", required: false)
@@ -130,12 +130,12 @@
                                 </div>
                                 <div class="social">
                                     <ul class="d-flex flex-row align-items-center justify-content-start">
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="pinterest.com/Lauphan144/"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        <li><a href="https://www.facebook.com/DangHBaoHan"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 
                                     </ul>
                                 </div>
-                                <div class="footer_submit"><a href="#">Gửi danh sách</a></div>
+                                <div class="footer_submit"><a href="https://www.facebook.com/messages/t/DangHBaoHan">Liên Hệ</a></div>
                             </div>
                         </div>
 
@@ -163,13 +163,11 @@
                                     </ul>
                                 </div>
                                 <div class="footer_links usefull_links">
-                                    <div class="footer_title">Đường dẫn khả dụng</div>
-                                    <ul>
-                                        <li><a href="#">Chứng thực</a></li>
-                                        <li><a href="#">Danh sách</a></li>
-                                        <li><a href="#">Tính Năng</a></li>
-                                        <li><a href="#">Liên hệ</a></li>
-                                        <li><a href="#">Chi tiết</a></li>
+                                    <div class="footer_title">Thời gian hiện tại</div>
+                                    <a></a>
+                                    <p>&copy; @DateTime.Now.TimeOfDay - Perpect Property</p>
+
+                                    <div><img src="~/Other/hinh/ppclogo.jpg" width="270px"> </div>
                                     </ul>
                                 </div>
                             </div>
@@ -248,11 +246,14 @@
                                 </div>
                                 <nav class="footer_nav order-md-2 order-1 ml-md-auto">
                                     <ul class="d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
-                                        <li><a href="index.html">Trang Chủ</a></li>
-                                        <li><a href="about.html">Chi tiết</a></li>
-                                        <li><a href="listings.html">Dang sách</a></li>
-                                        <li><a href="blog.html">Tin tức</a></li>
-                                        <li><a href="contact.html">Liên hệ</a></li>
+
+                                        <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                                        <li><a href="@Url.Action("About","Home")">About</a></li>
+
+                                        <li><a href="@Url.Action("Listing","Home")">Listings</a></li>
+                                        <li><a href="@Url.Action("News","Home")">News</a></li>
+                                        <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+
                                     </ul>
                                 </nav>
                             </div>

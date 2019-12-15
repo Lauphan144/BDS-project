@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PPCDB2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PPCDB2.dbo.Account' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="Full_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="nvarchar" MaxLength="30" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
   <EntityType Name="City">
     <Key>
       <PropertyRef Name="ID" />
@@ -208,6 +221,16 @@
     <EntitySet Name="Property_Status" EntityType="Self.Property_Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Property_Type" EntityType="Self.Property_Type" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Account" EntityType="Self.Account" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Account].[ID] AS [ID], 
+    [Account].[Username] AS [Username], 
+    [Account].[Password] AS [Password], 
+    [Account].[Full_Name] AS [Full_Name], 
+    [Account].[Role] AS [Role], 
+    [Account].[IsActive] AS [IsActive]
+    FROM [dbo].[Account] AS [Account]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_District_City" Association="Self.FK_District_City">
       <End Role="City" EntitySet="City" />
       <End Role="District" EntitySet="District" />

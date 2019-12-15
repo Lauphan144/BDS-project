@@ -40,6 +40,7 @@
         
     }
 
+
 .button-add {
     color: white;
     border: 2px solid #00BFFF;
@@ -61,3 +62,16 @@
     display: flex;
     flex-direction: column;
 }
+.button-print {
+    color:red;
+    border: 2px solid #00BFFF;
+    background: #ffd800;
+    text-align: center;
+    margin: 30px;
+    padding: 6px 20px;
+    border-radius: 8px;
+}
+    .button-print:hover {
+        background: #ffffff;
+        color: #00BFFF;
+    }

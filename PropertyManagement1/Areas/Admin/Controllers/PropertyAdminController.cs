@@ -22,11 +22,14 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         }
         public ActionResult Create()
         {
+            
             PopularData();
             return View();
         }
-        public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStastusSelected = null)
+        public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStastusSelected = null, object listCitySelected = null)
         {
+            ViewBag.CityList = new SelectList(db.City.ToList(), "ID", "City_Name", listCitySelected);
+            
             ViewBag.Property_Type_ID = new SelectList(db.Property_Type.ToList(), "ID", "Property_Type_Name", propertyTypeSelected);
             ViewBag.District_ID = new SelectList(db.District.ToList(), "ID", "District_Name", districtSelected);
             ViewBag.Property_Status_ID = new SelectList(db.Property_Status.ToList(), "ID", "Property_Status_Name", propertyTypeSelected);
@@ -48,7 +51,7 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                         if (imageFile != null)
                         {
                             var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
-                            var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Other/hinh"), fileName);
 
                             // The files are not actually saved in this demo
                             imageFile.SaveAs(physicalPath);
@@ -56,19 +59,24 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                         }
                     }
                 }
+                else { Session["success"] = "Fail"; }
                 property.Album = album;
                 if (file != null)
                 {
                     var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
-                    var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
+                    var physicPath = Path.Combine(Server.MapPath("~/Other/hinh"), avatar);
                     file.SaveAs(physicPath);
                     property.Avatar = avatar;
-                }
+                }   
                 property.Installment_Rate = 0.7;
 
-                db.Property.Add(property);
-                db.SaveChanges();
-                PopularMessage(true);
+        
+                    db.Property.Add(property);
+                    db.SaveChanges();
+                    PopularMessage(true);
+                
+                
+                
             }
             else
             {
@@ -79,10 +87,10 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         }
         public void PopularMessage(bool success)
         {
-            if (success)
-                Session["success"] = "Successfull";
-            else
-                Session["success"] = "Fail";
+            if (success) { Session["success"] = "Successfull"; }
+
+            else { Session["success"] = "Fail"; }
+                
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -110,7 +118,7 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                         if (imageFile != null)
                         {
                             var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
-                            var physicalPath = Path.Combine(Server.MapPath("~/Images"), fileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Other/hinh"), fileName);
 
                             // The files are not actually saved in this demo
                             imageFile.SaveAs(physicalPath);
@@ -124,7 +132,7 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                 if (file != null)
                 {
                     var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
-                    var physicPath = Path.Combine(Server.MapPath("~/Images"), avatar);
+                    var physicPath = Path.Combine(Server.MapPath("~/Other/hinh"), avatar);
                     file.SaveAs(physicPath);
                     pp.Avatar = avatar;
                 }
@@ -186,7 +194,7 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         [HttpPost]
         public string deleteImage(string imageName, int id)
         {
-            string fullPath = Request.MapPath("~/Images" + imageName);
+            string fullPath = Request.MapPath("~/Other/hinh" + imageName);
             if (System.IO.File.Exists(fullPath))
             {
                 System.IO.File.Delete(fullPath);
@@ -199,6 +207,13 @@ namespace PropertyManagement1.Areas.Admin.Controllers
             db.Entry(property).State = EntityState.Modified;
             db.SaveChanges();
             return property.Album;
+        }
+        public JsonResult GetDistrictByCityId(int id)
+        {
+            // Disable proxy creation
+            db.Configuration.ProxyCreationEnabled = false;
+            var listDistrict = db.District.Where(x => x.City_ID == id).ToList();
+            return Json(listDistrict, JsonRequestBehavior.AllowGet);
         }
     }
 }

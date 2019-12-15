@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
     <Compile Include="Areas\Admin\Controllers\FullController.cs" />
     <Compile Include="Areas\Admin\Controllers\InstallmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\PropertyAdminController.cs" />
@@ -143,6 +144,9 @@
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\City.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -213,6 +217,7 @@
     <Content Include="Content\css\hamburgers.min.css" />
     <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\css\StyleSheet1.css" />
+    <Content Include="Content\css\Admin2.css" />
     <Content Include="Content\dataTables.bootstrap4.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\PagedList.css" />
@@ -361,6 +366,7 @@
     <Content Include="Other\styles\single.css" />
     <Content Include="Other\styles\single_responsive.css" />
     <Content Include="Other\styles\ConCac.css" />
+    <Content Include="Other\styles\search.css" />
     <Content Include="Scripts\Scrips\animsition.min.js" />
     <Content Include="Scripts\Scrips\bootstrap.min.js" />
     <Content Include="Scripts\Scrips\countdowntime.js" />
@@ -467,6 +473,7 @@
     <Content Include="Other\plugins\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\Full\Print.cshtml" />
     <Content Include="Areas\Admin\Views\Installment\Print.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Login.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap4.js" />
     <Content Include="Scripts\demo.js" />
@@ -499,6 +506,8 @@
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="webfonts\SourceSansPro-Regular.ttf" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

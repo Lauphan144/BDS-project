@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -187,6 +187,7 @@
 	}
 	.search_input
 	{
+
 		width: 100%;
 	}
 	.search_input:not(:last-of-type)

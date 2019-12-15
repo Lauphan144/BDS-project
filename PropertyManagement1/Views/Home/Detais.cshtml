@@ -1,5 +1,6 @@
 ﻿@using PropertyManagement1.Models
 @model Property
+<globalization culture="en-us" />
 @{
     ViewBag.Title = "Detais";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -41,12 +42,10 @@
             <div class="col">
                 <div class="search_container">
                     <div class="search_form_container">
-                        <form action="#" class="search_form" id="search_form">
+                        <form action="@Url.Action("Search","Home")" class="search_form" id="search_form" role="search" method="post">
                             <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
                                 <div class="search_inputs d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                    <input type="text" class="search_input" placeholder="Property type" required="required">
-                                    <input type="text" class="search_input" placeholder="No rooms" required="required">
-                                    <input type="text" class="search_input" placeholder="Location" required="required">
+                                    <input type="text" class="search_input1" placeholder="Property type" required="required" name="search">
                                 </div>
                                 <button class="search_button">submit listing</button>
                             </div>
@@ -66,8 +65,6 @@
             <div class="col">
 
                 <!-- Image -->
-                <div class="listing_image"><img src="@Url.Content("~/Other/hinh/"+ Model.Avatar)" alt=""></div>
-
                 <!-- Tabs -->
                 <div class="listing_tabs d-flex flex-row align-items-start justify-content-between flex-wrap">
 
@@ -143,13 +140,14 @@
 
                 </div>
 
+                <div class="listing_image"><img src="@Url.Content("~/Other/hinh/"+ Model.Avatar)" alt="@Model.Property_Name">@Model.Property_Name</div>
                 <!-- About -->
 
                 <div class="about">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="property_info">
-                                <div class="tag_price listing_price">@Model.Price</div>
+                                <div class="tag_price listing_price">Giá: @string.Format("{0:0,0.00,00}", Model.Price) VNĐ</div>
                                 <div class="listing_name"><h1> @Model.Property_Name</h1></div>
                                 <div class="listing_location d-flex flex-row align-items-start justify-content-start">
                                     <img src="~/Other/hinh/icon_1.png" alt="">
@@ -157,12 +155,16 @@
                                 </div>
                                 <div class="listing_list">
                                     <ul>
-                                        <li>Property ID: @Model.ID</li>
+                                        <li>Property Code: @Model.Property_Code</li>
                                         <li>Status: @Model.Property_Status.Property_Status_Name</li>
                                     </ul>
                                 </div>
                                 <div class="prop_agent d-flex flex-row align-items-center justify-content-start">
-                                    <div class="prop_agent_image"><img src="@Url.Content("~/Other/hinh/"+ Model.Avatar)" alt=""></div>
+
+
+
+
+                                    <div class="prop_agent_image"><img class="slide" src="@Url.Content("~/Other/hinh/"+ Model.Album)" alt=""></div>
                                     <div class="prop_agent_name"><a href="https://www.messenger.com/t/1909825242436832">Liên Hệ</a></div>
                                 </div>
                                 <div class="prop_info">
