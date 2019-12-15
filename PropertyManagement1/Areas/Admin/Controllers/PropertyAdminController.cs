@@ -34,10 +34,11 @@ namespace PropertyManagement1.Areas.Admin.Controllers
             ViewBag.District_ID = new SelectList(db.District.ToList(), "ID", "District_Name", districtSelected);
             ViewBag.Property_Status_ID = new SelectList(db.Property_Status.ToList(), "ID", "Property_Status_Name", propertyTypeSelected);
         }
+
         [HttpPost]
         public ActionResult Create([Bind(Include = "ID, Property_Code, Property_Name, Property_Type_ID, Description, District_ID, Address, Area, Bed_Room, Bath_Room, Price, Installment_Rate, Avatar, Album, Property_Status_ID")] Property property, List<HttpPostedFileBase> files)
         {
-           
+
 
             if (ModelState.IsValid)
             {
@@ -51,7 +52,7 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                         if (imageFile != null)
                         {
                             var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
-                            var physicalPath = Path.Combine(Server.MapPath("~/Other/hinh"), fileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Other/hinh/"), fileName);
 
                             // The files are not actually saved in this demo
                             imageFile.SaveAs(physicalPath);
@@ -59,24 +60,19 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                         }
                     }
                 }
-                else { Session["success"] = "Fail"; }
                 property.Album = album;
                 if (file != null)
                 {
                     var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
-                    var physicPath = Path.Combine(Server.MapPath("~/Other/hinh"), avatar);
+                    var physicPath = Path.Combine(Server.MapPath("~/Other/hinh/"), avatar);
                     file.SaveAs(physicPath);
                     property.Avatar = avatar;
-                }   
+                }
                 property.Installment_Rate = 0.7;
 
-        
-                    db.Property.Add(property);
-                    db.SaveChanges();
-                    PopularMessage(true);
-                
-                
-                
+                db.Property.Add(property);
+                db.SaveChanges();
+                PopularMessage(true);
             }
             else
             {
@@ -87,11 +83,12 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         }
         public void PopularMessage(bool success)
         {
-            if (success) { Session["success"] = "Successfull"; }
-
-            else { Session["success"] = "Fail"; }
-                
+            if (success)
+                Session["success"] = "Successfull";
+            else
+                Session["success"] = "Fail";
         }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {

@@ -75,7 +75,15 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                        <i class="fas fa-th-large"></i>
+                        <i class="fas fa-th-large">
+
+                        </i>
+                        <div class="alert alert-success alert-dismissible" role="alert">
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Well done!</strong> @Session["success"]
+                        </div>
+                    }
                     </a>
                 </li>
             </ul>
@@ -100,75 +108,78 @@
                         <img src="~/Images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
-                        <a href="https://www.facebook.com/DangHBaoHan" class="d-block">@if (Session["UserName"] != null){ @Session["Username"].ToString()}</a>
+                        <a href="https://www.facebook.com/DangHBaoHan" class="d-block">@if (Session["UserName"] != null)
+                        {@Session["Username"].ToString()}</a>
 
 
-</div>
+                    </div>
 
 
-</div>
+                </div>
 
 
-<!-- Sidebar Menu -->
+                <!-- Sidebar Menu -->
+               
 
 
-<nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
-        @if (Session["Role"].ToString() == "ADMIN" || Session["Role"].ToString() == "SALE")
-        {
-            <li class="nav-item">
-                <a href="/Admin/PropertyAdmin" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Manage Property
-                    </p>
-                </a>
-            </li>
-        }
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library -->
+                        @if (Session["Role"].ToString() == "ADMIN" || Session["Role"].ToString() == "SALE")
+                        {
+                            <li class="nav-item">
+                                <a href="/Admin/PropertyAdmin" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Manage Property
+                                    </p>
+                                </a>
+                            </li>
+                        }
 
-        @if (Session["Role"].ToString() == "ADMIN" || Session["Role"].ToString() == "SALE")
-        {
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Manage Contract
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="/Admin/Full" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Full</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/Admin/Installment" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Installment</p>
-                        </a>
-                    </li>
+                        @if (Session["Role"].ToString() == "ADMIN" || Session["Role"].ToString() == "SALE")
+                        {
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Manage Contract
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Admin/Full" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Full</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/Admin/Installment" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Installment</p>
+                                        </a>
+                                    </li>
 
-                </ul>
-            </li>
-        }
+                                </ul>
+                            </li>
+                        }
 
-        @if (Session["Role"].ToString() == "ADMIN")
-        {
-            <li class="nav-item">
-                <a href="/Admin/PropertyAdmin" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        STATIC
-                    </p>
-                </a>
-            </li>   
-        }
+                        @if (Session["Role"].ToString() == "ADMIN")
+                        {
+                            <li class="nav-item">
+                                <a href="/Admin/PropertyAdmin" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        STATIC
+                                    </p>
+                                </a>
+                            </li>
 
-    </ul>
+                        }
+
+                    </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

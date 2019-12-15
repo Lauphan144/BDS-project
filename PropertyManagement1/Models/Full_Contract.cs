@@ -12,35 +12,48 @@ namespace PropertyManagement1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Full_Contract
     {
         public int ID { get; set; }
+        [Display(Name ="Mã Số Hợp Đồng")]
         public string Full_Contract_Code { get; set; }
-        [Required(ErrorMessage = "Tên Khách Hàng")]
-        [StringLength(500, ErrorMessage = "Độ Dài Không Hợp Lệ", MinimumLength = 3)]
+        [Display(Name = "Tên Khách Hàng")]
         public string Customer_Name { get; set; }
-        [Display(Name = " Ngày Sinh"), Required]
-        [StringLength(60, ErrorMessage = "Nhập đúng định dạng",MinimumLength = 3)]
-        [DataType(DataType.Date)]
+        [Display(Name = "Sinh Nhật")]
         public Nullable<int> Year_Of_Birth { get; set; }
+        [Display(Name = "CMND")]
         public string SSN { get; set; }
-        [Required(ErrorMessage = "Địa Chỉ còn trống")]
-        [StringLength(500, ErrorMessage = "Độ Dài Không Hợp Lệ", MinimumLength = 3)]
+        [Display(Name = "Địa Chỉ Khách Hàng")]
         public string Customer_Address { get; set; }
+        [Display(Name = "Số Điện Thoại")]
         public string Mobile { get; set; }
+        [Display(Name = "Loại Bất Động Sản")]
         public int Property_ID { get; set; }
+        [Display(Name = "Ngày Lập Danh Sách")]
+
         public Nullable<System.DateTime> Date_Of_Contract { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+        [Display(Name = "Giá")]
+        [UIHint("Currency")]
+        [DataType(DataType.Currency)]
+        public Nullable<decimal> Price { get; set; }
+        [Display(Name = "Đặt Cọc")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
 
         [UIHint("Currency")]
         [DataType(DataType.Currency)]
-        public Nullable<decimal> Price { get; set; }
-
         public Nullable<decimal> Deposit { get; set; }
+        [Display(Name = "Còn lại")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+
+        [UIHint("Currency")]
+        [DataType(DataType.Currency)]
+
         public Nullable<decimal> Remain { get; set; }
+        [Display(Name = "Trạng thái")]
         public bool Status { get; set; }
-    
+
         public virtual Property Property { get; set; }
     }
 }
