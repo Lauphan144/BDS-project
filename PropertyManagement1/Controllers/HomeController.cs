@@ -16,7 +16,7 @@ namespace PropertyManagement1.Controllers
         public ActionResult Index()
         {
             
-            var lslPro = db.Property.Take(3).OrderBy(n => n.Price).ToList();
+            var lslPro = db.Property.Take(3).OrderBy(n => n.ID).ToList();
             return View(lslPro);
         }
         public ActionResult Detais(int id)

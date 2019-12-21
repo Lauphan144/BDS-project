@@ -78,12 +78,8 @@
                         <i class="fas fa-th-large">
 
                         </i>
-                        <div class="alert alert-success alert-dismissible" role="alert">
-
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <strong>Well done!</strong> @Session["success"]
-                        </div>
-                    }
+                        
+                    
                     </a>
                 </li>
             </ul>
@@ -125,7 +121,8 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
+                        
                         @if (Session["Role"].ToString() == "ADMIN" || Session["Role"].ToString() == "SALE")
                         {
                             <li class="nav-item">
@@ -137,6 +134,7 @@
                                 </a>
                             </li>
                         }
+
 
                         @if (Session["Role"].ToString() == "ADMIN" || Session["Role"].ToString() == "SALE")
                         {
@@ -166,6 +164,7 @@
                             </li>
                         }
 
+
                         @if (Session["Role"].ToString() == "ADMIN")
                         {
                             <li class="nav-item">
@@ -178,6 +177,8 @@
                             </li>
 
                         }
+
+
 
                     </ul>
                 </nav>

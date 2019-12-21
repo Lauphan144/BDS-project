@@ -38,5 +38,6 @@ namespace PropertyManagement1.Areas.Admin.Controllers
             return RedirectToAction("Index","Login");
         }
 
+
     }
 }
