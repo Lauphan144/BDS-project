@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dfd8b506d1d04098a10357005b555a35" Name="Diagram1" ZoomLevel="67">
+      <Diagram DiagramId="dfd8b506d1d04098a10357005b555a35" Name="Diagram1" ZoomLevel="67" DisplayType="true">
         <EntityTypeShape EntityType="PPCDB2Model.City" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="PPCDB2Model.District" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PPCDB2Model.Full_Contract" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
@@ -21,8 +21,8 @@
         <AssociationConnector Association="PPCDB2Model.FK_Property_Property_Status" ManuallyRouted="false" />
         <AssociationConnector Association="PPCDB2Model.FK_Property_Property_Type" ManuallyRouted="false" />
         <AssociationConnector Association="PPCDB2Model.FK_Property_Service_Service" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PPCDB2Model.Login" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="PPCDB2Model.Account" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="PPCDB2Model.Login" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PPCDB2Model.Account" Width="1.5" PointX="9.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
