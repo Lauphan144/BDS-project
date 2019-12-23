@@ -6,8 +6,6 @@ using System.Web.Mvc;
 using PropertyManagement1.Models;
 using System.IO;
 using System.Data.Entity;
-using System.Transactions;
-
 
 namespace PropertyManagement1.Areas.Admin.Controllers
 {
@@ -24,85 +22,64 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         }
         public ActionResult Create()
         {
-            
+
             PopularData();
-            ViewBag.Service_ID = new MultiSelectList(db.Service.ToList(), "ID", "Service_Name", null);
             return View();
         }
-
-        public void PopularData(IQueryable<int> selectedService = null, object propertyTypeSelected = null, object districtSelected = null, object propertyStastusSelected = null, object listCitySelected = null)
+        public void PopularData(object propertyTypeSelected = null, object districtSelected = null, object propertyStastusSelected = null, object listCitySelected = null)
         {
             ViewBag.CityList = new SelectList(db.City.ToList(), "ID", "City_Name", listCitySelected);
-            
+
             ViewBag.Property_Type_ID = new SelectList(db.Property_Type.ToList(), "ID", "Property_Type_Name", propertyTypeSelected);
             ViewBag.District_ID = new SelectList(db.District.ToList(), "ID", "District_Name", districtSelected);
             ViewBag.Property_Status_ID = new SelectList(db.Property_Status.ToList(), "ID", "Property_Status_Name", propertyTypeSelected);
-            ViewBag.Service_ID = new MultiSelectList(db.Service.ToList(), "ID", "Service_Name", selectedService);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "ID, Property_Code, Property_Name, Property_Type_ID, Description, District_ID, Address, Area, Bed_Room, Bath_Room, Price, Installment_Rate, Avatar, Album, Property_Status_ID")] Property property, List<HttpPostedFileBase> files, List<int> Service_ID)
+        public ActionResult Create([Bind(Include = "ID, Property_Code, Property_Name, Property_Type_ID, Description, District_ID, Address, Area, Bed_Room, Bath_Room, Price, Installment_Rate, Avatar, Album, Property_Status_ID")] Property property, List<HttpPostedFileBase> files)
         {
 
 
             if (ModelState.IsValid)
             {
-                using (var scope = new TransactionScope())
+                string album = "";
+                var file = Request.Files["file"];
+
+                if (file != null)
                 {
-                    string album = "";
-                    var file = Request.Files["file"];
-
-                    if (file != null)
+                    foreach (var imageFile in files)
                     {
-                        foreach (var imageFile in files)
+                        if (imageFile != null)
                         {
-                            if (imageFile != null)
-                            {
-                                var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
-                                var physicalPath = Path.Combine(Server.MapPath("~/Other/hinh/"), fileName);
+                            var fileName = DateTime.Now.Ticks + "-" + Path.GetFileName(imageFile.FileName);
+                            var physicalPath = Path.Combine(Server.MapPath("~/Other/hinh/"), fileName);
 
-                                // The files are not actually saved in this demo
-                                imageFile.SaveAs(physicalPath);
-                                album += album.Length > 0 ? ";" + fileName : fileName;
-                            }
+                            // The files are not actually saved in this demo
+                            imageFile.SaveAs(physicalPath);
+                            album += album.Length > 0 ? ";" + fileName : fileName;
                         }
                     }
-                    property.Album = album;
-                    if (file != null)
-                    {
-                        var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
-                        var physicPath = Path.Combine(Server.MapPath("~/Other/hinh/"), avatar);
-                        file.SaveAs(physicPath);
-                        property.Avatar = avatar;
-                    }
-                    foreach (var item in Service_ID)
-                    {
-
-                        Property_Service properS = new Property_Service();
-                        properS.Property_ID = property.ID;
-                        properS.Service_ID = item;
-                        db.Property_Service.Add(properS);
-                    }
-                    property.Installment_Rate = 0.7;
-
-
-                    db.SaveChanges();
-                    scope.Complete();
-                    PopularMessage(true);
-                    return RedirectToAction("Index");
                 }
+                property.Album = album;
+                if (file != null)
+                {
+                    var avatar = DateTime.Now.Ticks + "-" + Path.GetFileName(file.FileName);
+                    var physicPath = Path.Combine(Server.MapPath("~/Other/hinh/"), avatar);
+                    file.SaveAs(physicPath);
+                    property.Avatar = avatar;
+                }
+                property.Installment_Rate = 0.7;
+
+                db.Property.Add(property);
+                db.SaveChanges();
+                PopularMessage(true);
             }
             else
             {
                 PopularMessage(false);
             }
-            ViewBag.Service_ID = new MultiSelectList(db.Service.ToList(), "ID", "Service_Name", null);
 
-            PopularData();
             return Redirect("Index");
-                
         }
         public void PopularMessage(bool success)
         {
@@ -117,11 +94,11 @@ namespace PropertyManagement1.Areas.Admin.Controllers
         {
 
             var property = db.Property.Select(p => p).Where(p => p.ID == id).FirstOrDefault();
-            PopularData();
+            PopularData(property.Property_Type_ID, property.Property_Status_ID);
             return View(property);
         }
         [HttpPost]
-        public ActionResult Edit(int id,Property pp, List<HttpPostedFileBase> files)
+        public ActionResult Edit(int id, Property pp, List<HttpPostedFileBase> files)
         {
             var Property = db.Property.ToList();
             try
@@ -161,8 +138,8 @@ namespace PropertyManagement1.Areas.Admin.Controllers
 
 
 
-                var property = db.Property.Select(p => p).Where(p => p.ID ==id).FirstOrDefault();
-                PopularData();
+                var property = db.Property.Select(p => p).Where(p => p.ID == id).FirstOrDefault();
+                PopularData(property.Property_Type_ID, property.Property_Status_ID);
                 property.Property_Name = pp.Property_Name;
                 property.Property_Type_ID = pp.Property_Type_ID;
                 property.Description = pp.Description;
@@ -179,10 +156,12 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
-            } catch { 
-                return View(Property); 
             }
-            
+            catch
+            {
+                return View(Property);
+            }
+
         }
         [HttpGet]
         public ActionResult Delete(int id)
@@ -204,7 +183,8 @@ namespace PropertyManagement1.Areas.Admin.Controllers
                 }
                 return RedirectToAction("Index");
 
-            } catch { return View(); } 
+            }
+            catch { return View(); }
         }
         public ActionResult Details(int id)
         {

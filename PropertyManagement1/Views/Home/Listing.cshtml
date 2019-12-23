@@ -126,7 +126,7 @@
                 </div>
               
 
-                @Html.PagedListPager(Model, page => Url.Action("Listing", new { page, @class = "phantrang" }))
+                <li style="text-align:center;margin: 0 auto "> @Html.PagedListPager(Model, page => Url.Action("Listing", new { page, @class = "phantrang" }))</li>
             </div>
         </div>
     </div>
